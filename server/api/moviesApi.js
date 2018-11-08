@@ -27,12 +27,17 @@ router.post('/',
         catch (err) { throw err; }
     });
 
-const convertToTitleCase = title => {
-    const casedTitle = title
+/**
+ * Convert a sentence to title case
+ * @param {string} sentence - The sentence to convert
+ * @return The sentence in the desired case
+ */
+const convertToTitleCase = sentence => {
+    const casedTitle = sentence
         .toLowerCase()
         .split(' ')
-        .map(part => part
-            .replace(part[0], part[0].toUpperCase())
+        .map(word => word
+            .replace(word[0], word[0].toUpperCase())
             .replace(/[^0-9a-z]/gi, '')
         )
         .join(' ');

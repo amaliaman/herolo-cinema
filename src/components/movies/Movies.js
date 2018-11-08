@@ -22,7 +22,6 @@ class Movies extends Component {
             <div>
                 <h3>Hero Movies</h3>
                 {this.state.movies ? this.state.movies.map(m => <Movie key={m.id} movie={m} />) : 'null'} {/* //////////TODO: empty message */}
-                <button>Add Movie</button>
             </div>
         );
     }
