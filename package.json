@@ -1,17 +1,24 @@
 {
-  "name": "herolo",
+  "name": "herolo-cinema",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "concurrently": "^4.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "moment": "^2.22.2",
+    "path": "^0.12.7",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-scripts": "2.1.1"
   },
+  "proxy": "http://localhost:5000/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently --kill-others \"react-scripts start\" \"nodemon server.js\""
   },
   "eslintConfig": {
     "extends": "react-app"
