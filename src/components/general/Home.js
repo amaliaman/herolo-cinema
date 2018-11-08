@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+import { Button, Container, Row } from 'reactstrap';
 
 import Movies from '../movies/Movies';
 
 class Home extends Component {
     render() {
         return (
-            <div>
-                <Movies />
-                <Button color="danger">+ Add Movie</Button>
-            </div>
+            <Container>
+                <Row>
+                    <h1 className="display-4">🎬 Herolo Cinema</h1>
+                    <Movies />
+                </Row>
+                <Row>
+                    <Button color="danger">+ Add Movie</Button>
+                </Row>
+
+            </Container>
         );
     }
 }
