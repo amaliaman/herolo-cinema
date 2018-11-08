@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CardColumns } from 'reactstrap';
 
 import titles from '../../data/titles.json'
 import transportLayer from '../../utils/TransportLayer';
@@ -19,10 +20,12 @@ class Movies extends Component {
 
     render() {
         return (
-            <div>
-                <h3>Hero Movies</h3>
-                {this.state.movies ? this.state.movies.map(m => <Movie key={m.id} movie={m} />) : 'null'} {/* //////////TODO: empty message */}
-            </div>
+            <CardColumns>
+                {this.state.movies ?
+                    this.state.movies.map(m => <Movie key={m.id} movie={m} />)
+                    :
+                    'null'} {/* //////////TODO: empty message */}
+            </CardColumns>
         );
     }
 }
