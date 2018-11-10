@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Container, Row } from 'reactstrap';
 
+import { addMovie } from '../../actions';
+
 import Movies from '../movies/Movies';
 
 class Home extends Component {
@@ -16,10 +18,7 @@ class Home extends Component {
             title: "aaStarship Troopers 2 Hero Of The Federation",
             year: "aa2004"
         }
-        this.props.dispatch({
-            type: 'ADD_MOVIE',
-            movie
-        });
+        this.props.addMovie(movie);
     }
 
     render() {
@@ -27,15 +26,20 @@ class Home extends Component {
             <Container>
                 <Row>
                     <h1 className="display-4"><span role="img" aria-label="cinema">🎬</span> Herolo Cinema</h1>
+                </Row>
+                <Row>
                     <Movies />
                 </Row>
                 <Row>
                     <Button color="danger" onClick={this.handleClick}>+ Add Movie</Button>
                 </Row>
-
             </Container>
         );
     }
 }
 
-export default connect()(Home);
+const actionCreators = {
+    addMovie
+};
+
+export default connect(null, actionCreators)(Home);
