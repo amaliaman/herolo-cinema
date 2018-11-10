@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { CardFooter, Card, CardText, CardBody, CardLink, CardTitle, CardSubtitle } from 'reactstrap';
 
+import * as strings from '../constants/Strings';
+
 class Movie extends Component {
     render() {
-        const { title, year, runtime, genre, director } = this.props.movie;
+        const { id, title, year, runtime, genre, director } = this.props.movie;
         return (
             <Card>
                 <CardBody>
@@ -16,8 +18,8 @@ class Movie extends Component {
                     </CardText>
                 </CardBody>
                 <CardFooter>
-                    <CardLink href="#">Edit</CardLink>
-                    <CardLink href="#">Delete</CardLink>
+                    <CardLink href="#">{strings.EDIT_BUTTON}</CardLink>
+                    <CardLink href="#" onClick={() => this.props.deleteMovie(id)}>{strings.DELETE_BUTTON}</CardLink>
                 </CardFooter>
             </Card>
         );

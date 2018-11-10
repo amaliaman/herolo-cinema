@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CardColumns } from 'reactstrap';
-import { connect } from 'react-redux';
+
 
 // import titles from '../../data/titles.json'
 // import transportLayer from '../../utils/TransportLayer';
@@ -20,11 +20,10 @@ class Movies extends Component {
     // };
 
     render() {
-        console.log(this.props.movies)
         return (
             <CardColumns>
                 {this.props.movies.length ?
-                    this.props.movies.map(m => <Movie key={m.id} movie={m} />)
+                    this.props.movies.map(m => <Movie key={m.id} movie={m} deleteMovie={this.props.deleteMovie} />)
                     :
                     'null'} {/* //////////TODO: empty message */}
             </CardColumns>
@@ -33,9 +32,4 @@ class Movies extends Component {
 
 }
 
-const mapStateToProps = state => {
-    const { movies } = state;
-    return { movies };
-};
-
-export default connect(mapStateToProps)(Movies);
+export default Movies;
