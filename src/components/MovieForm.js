@@ -6,14 +6,25 @@ import * as strings from '../constants/Strings';
 class MovieForm extends Component {
     constructor() {
         super();
-        this.state = {
+        this.state = this.getInitialState();
+    }
+
+    getInitialState = () => {
+        return {
             title: '',
             year: '',
             director: '',
             genre: '',
             runtime: ''
         };
-    }
+    };
+
+    componentDidMount = () => {
+        if (this.props.movieToEdit) {
+            const { title, year, director, genre, runtime } = this.props.movieToEdit;
+            this.setState({ title, year, director, genre, runtime });
+        }
+    };
 
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value });
@@ -21,7 +32,13 @@ class MovieForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.addMovie(this.state);
+        if (this.props.movieToEdit) {
+            this.props.updateMovie(this.state, this.props.movieToEdit.id);
+        }
+        else {
+            this.props.addMovie(this.state);
+        }
+        this.setState(this.getInitialState());
         this.props.toggle();
     };
 
@@ -46,9 +63,9 @@ class MovieForm extends Component {
                 </FormGroup>
                 <FormGroup>
                     <Label for="runtime">{strings.FORM_LABEL_RUNTIME}</Label>
-                    <Input type="text" name="runtime" id="runtime" placeholder={strings.FORM_LABEL_RUNTIME} onChange={this.handleChange} />
+                    <Input type="text" name="runtime" id="runtime" placeholder={strings.FORM_LABEL_RUNTIME} onChange={this.handleChange} value={this.state.runtime} />
                 </FormGroup>
-                <Button color="primary" type="submit">Submit</Button>
+                <Button color="primary" type="submit">{this.props.buttonLabel}</Button>
             </Form>
         );
     }

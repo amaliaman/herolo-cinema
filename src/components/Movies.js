@@ -23,7 +23,14 @@ class Movies extends Component {
         return (
             <CardColumns>
                 {this.props.movies.length ?
-                    this.props.movies.map(m => <Movie key={m.id} movie={m} deleteMovie={this.props.deleteMovie} />)
+                    this.props.movies.map(m => (
+                        <Movie
+                            key={m.id}
+                            movie={m}
+                            deleteMovie={this.props.deleteMovie}
+                            selectForEdit={this.props.selectForEdit}
+                            showForm={this.props.showForm}
+                        />))
                     :
                     'null'} {/* //////////TODO: empty message */}
             </CardColumns>

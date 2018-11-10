@@ -12,6 +12,8 @@ export const CANCEL_BUTTON = 'Cancel';
 export const DELETE_BUTTON = 'Delete';
 export const EDIT_BUTTON = 'Edit';
 export const ADD_BUTTON = 'Add Movie';
+export const SUBMIT_ADD_BUTTON = 'Submit';
+export const SUBMIT_UPDATE_BUTTON = 'Update';
 
 export const FORM_LABEL_TITLE = 'Title';
 export const FORM_LABEL_YEAR = 'Year';
