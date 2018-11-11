@@ -8,12 +8,17 @@ const initialState = {
     movies: {
         isFetching: false,
         items: [],
-        selectedId: ''
+        selectedId: '',
+        selectedTitle: ''
     },
     form: {
         isOpen: false,
         mode: FORM_MODES.ADD
-    }
+    },
+    deleteConfirmation: {
+        isOpen: false
+    },
+    errorMessage: ''
 };
 
 const movies = (state = initialState.movies, action) => {
@@ -30,6 +35,8 @@ const movies = (state = initialState.movies, action) => {
         case types.DELETE_MOVIE:
             return {
                 ...state,
+                selectedId: '',
+                selectedTitle: '',
                 items: state.items.filter(movie => movie.id !== action.id)
             };
         case types.SELECT_FOR_EDIT:
@@ -37,6 +44,15 @@ const movies = (state = initialState.movies, action) => {
                 ...state,
                 selectedId: action.id
             };
+        case types.TOGGLE_DELETE_CONFIRM:
+            if (action.id) {
+                return {
+                    ...state,
+                    selectedId: action.id,
+                    selectedTitle: state.items.find(i => i.id === action.id).title
+                };
+            }
+            return state;
         case types.UPDATE_MOVIE:
             return {
                 ...state,
@@ -45,7 +61,7 @@ const movies = (state = initialState.movies, action) => {
                     if (movie.id === action.id) {
                         return {
                             ...movie,
-                            ...action.data
+                            ...action.movie
                         }
                     }
                     else return movie;
@@ -85,9 +101,35 @@ const form = (state = initialState.form, action) => {
     }
 };
 
+const deleteConfirmation = (state = initialState.deleteConfirmation, action) => {
+    switch (action.type) {
+        case types.TOGGLE_DELETE_CONFIRM:
+            return {
+                ...state,
+                isOpen: !state.isOpen
+            };
+        default:
+            return state;
+    }
+};
+
+const errorMessage = (state = initialState.errorMessage, action) => {
+    switch (action.type) {
+        case types.SHOW_ERROR:
+            return action.message;
+        case types.RESET_ERROR:
+            return initialState.errorMessage;
+        default:
+            return state;
+    }
+
+};
+
 const rootReducer = combineReducers({
     movies,
-    form
+    form,
+    deleteConfirmation,
+    errorMessage
 });
 
 export default rootReducer;

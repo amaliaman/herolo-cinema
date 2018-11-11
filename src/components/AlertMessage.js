@@ -3,7 +3,7 @@ import { Alert } from 'reactstrap';
 
 const AlertMessage = ({ color, message }) => {
     return (
-        <Alert color={color}>
+        <Alert color={color} className='alert-message'>
             {message}
         </Alert>
     )

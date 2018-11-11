@@ -15,7 +15,7 @@ class Movies extends Component {
                         <Movie
                             key={m.id}
                             movie={m}
-                            deleteMovie={this.props.deleteMovie}
+                            toggleDeleteConfirm={this.props.toggleDeleteConfirm}
                             selectForEdit={this.props.selectForEdit}
                             showForm={this.props.showForm}
                         />

@@ -5,7 +5,7 @@ import MovieForm from './MovieForm';
 
 class MovieFormWrapper extends Component {
     render() {
-        const { isOpen, toggle, title, submitAction, addMovie, updateMovie, movieToEdit, buttonLabel } = this.props;
+        const { isOpen, toggle, title, submitAction, addMovie, updateMovie, movieToEdit, buttonLabel,errorMessage } = this.props;
         return (
             <Modal isOpen={isOpen} toggle={toggle}>
                 <ModalHeader toggle={toggle}>{title}</ModalHeader>
@@ -17,6 +17,7 @@ class MovieFormWrapper extends Component {
                         updateMovie={updateMovie}
                         movieToEdit={movieToEdit}
                         buttonLabel={buttonLabel}
+                        errorMessage={errorMessage}
                     />
                 </ModalBody>
             </Modal>

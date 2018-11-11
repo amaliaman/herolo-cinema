@@ -2,6 +2,11 @@
     --default-margin: 10px;
 }
 
+body {
+    background-image: url('./images/bg.jpg');
+    background-size: cover;
+}
+
 .loader {
     padding: 20px;
 }
@@ -14,6 +19,26 @@
     margin: var(--default-margin);
 }
 
+.modal-body button,
 form button {
     margin-right: var(--default-margin);
+}
+
+.modal-body .form-row {
+    margin: var(--default-margin) 0 0 0;
+}
+
+.validation-error {
+    color: var(--danger);
+    font-size: 0.8rem;
+}
+
+.alert-message {
+    width: 100%;
+}
+
+.footer {
+    color: var(--purple);
+    display: flex;
+    justify-content: center;
 }

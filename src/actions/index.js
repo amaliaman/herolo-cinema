@@ -1,16 +1,30 @@
 import * as types from '../constants/ActionTypes';
 import titles from '../data/titles.json'
 import transportLayer from '../utils/TransportLayer';
+import * as strings from '../constants/Strings';
 
 /**
  * ADD_MOVIE action creator.
  * Create a new movie in the state.
  * @param {Object} movie - The movie to add.
  */
-export const addMovie = movie => ({
+const addMovie = movie => ({
     type: types.ADD_MOVIE,
     movie
 });
+
+export const addMovieUnique = movie => (dispatch, getState) => {
+    const { movies } = getState();
+    dispatch(resetError());
+    if (movies.items
+        .findIndex(m => m.title === movie.title) === -1) {
+        dispatch(addMovie(movie));
+        dispatch(toggleForm());
+    }
+    else {
+        dispatch(showError(`${strings.UNIQUE_TITLE_ERROR}: ${movie.title}`));
+    }
+};
 
 /**
  * DELETE_MOVIE action creator.
@@ -25,14 +39,28 @@ export const deleteMovie = id => ({
 /**
  * UPDATE_MOVIE action creator.
  * Update a movie in the state.
- * @param {Object} data - The movie data to update.
+ * @param {Object} movie - The movie movie to update.
  * @param {string} id - The id of the movie to update.
  */
-export const updateMovie = (data, id) => ({
+const updateMovie = (movie, id) => ({
     type: types.UPDATE_MOVIE,
-    data,
+    movie,
     id
 });
+
+export const updateMovieUnique = (movie, id) => (dispatch, getState) => {
+    const { movies } = getState();
+    dispatch(resetError());
+    if (movies.items
+        .filter(m => m.id !== movies.selectedId)
+        .findIndex(m => m.title === movie.title) === -1) {
+        dispatch(updateMovie(movie, id));
+        dispatch(toggleForm());
+    }
+    else {
+        dispatch(showError(`${strings.UNIQUE_TITLE_ERROR}: ${movie.title}`));
+    }
+};
 
 /**
  * SELECT_FOR_EDIT action creator.
@@ -71,18 +99,44 @@ export const fetchMovies = () => async dispatch => {
     return dispatch(receiveMovies(movies));
 };
 
+// UI related
+
 /**
  * SHOW_FORM action creator.
  * @param {string} mode - The mode of the form (add/edit).
  */
-export const showForm = mode => ({
+const showFormNoReset = mode => ({
     type: types.SHOW_FORM,
     mode
 });
 
+export const showForm = mode => (dispatch, getState) => {
+    dispatch(resetError());
+    dispatch(showFormNoReset(mode));
+}
+
 /**
  * TOGGLE_FORM action creator.
  */
-export const toggleForm = () => ({
+const toggleFormNoReset = () => ({
     type: types.TOGGLE_FORM
+});
+
+export const toggleForm = () => (dispatch, getState) => {
+    dispatch(resetError());
+    dispatch(toggleFormNoReset());
+}
+
+export const toggleDeleteConfirm = id => ({
+    type: types.TOGGLE_DELETE_CONFIRM,
+    id
+});
+
+export const showError = message => ({
+    type: types.SHOW_ERROR,
+    message
+});
+
+export const resetError = () => ({
+    type: types.RESET_ERROR
 });
