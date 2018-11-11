@@ -1,15 +1,10 @@
 :root {
     --default-margin: 10px;
-    --bg: #f8f9fa;
 }
 
 body {
     background-image: url('./images/bg.jpg');
     background-size: cover;
-}
-
-h1 {
-    color: white;
 }
 
 .loader {
@@ -43,7 +38,7 @@ form button {
 }
 
 .footer {
-    color: white;
+    color: var(--purple);
     display: flex;
     justify-content: center;
 }

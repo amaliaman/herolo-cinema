@@ -25,7 +25,7 @@ class Home extends Component {
                 </Row>
                 <Row className='footer'>
                     <small>
-                        Background image <a href="https://www.freepik.com/free-photo/crop-clapperboard-on-black-background_1444029.htm">Designed by Freepik</a>
+                        Background image <a href='https://www.freepik.com/free-photo/creative-arrangement-of-popcorn-and-clapper_2303387.htm' target="_blank" rel="noopener noreferrer">Designed by Freepik</a>
                     </small>
                 </Row>
             </Container>
