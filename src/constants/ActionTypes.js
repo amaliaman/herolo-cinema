@@ -9,3 +9,4 @@ export const RECEIVE_MOVIES = 'RECEIVE_MOVIES';
 // UI
 export const SHOW_FORM = 'SHOW_FORM';
 export const TOGGLE_FORM = 'TOGGLE_FORM';
+export const TOGGLE_DELETE_CONFIRM = 'TOGGLE_DELETE_CONFIRM';

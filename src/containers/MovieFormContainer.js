@@ -24,12 +24,17 @@ class MovieFormContainer extends Component {
 
 const mapState = state => {
     const { form, movies: { items, selectedId } } = state;
-    return {
-        isOpen: form.isOpen,
-        title: form.mode === strings.FORM_MODES.EDIT ? strings.EDIT_MOVIE_TITLE : strings.ADD_MOVIE_TITLE,
-        movieToEdit: selectedId ? items.find(i => i.id === selectedId) : null,
-        buttonLabel: form.mode === strings.FORM_MODES.EDIT ? strings.SUBMIT_UPDATE_BUTTON : strings.SUBMIT_ADD_BUTTON
-    };
+    const propsObj = { isOpen: form.isOpen };
+    if (form.mode === strings.FORM_MODES.EDIT) {
+        propsObj.title = strings.EDIT_MOVIE_TITLE;
+        propsObj.buttonLabel = strings.SUBMIT_UPDATE_BUTTON;
+        propsObj.movieToEdit = items.find(i => i.id === selectedId);
+    }
+    else {
+        propsObj.title = strings.ADD_MOVIE_TITLE;
+        propsObj.buttonLabel = strings.SUBMIT_ADD_BUTTON;
+    }
+    return propsObj;
 };
 
 const mapActions = {

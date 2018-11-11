@@ -25,7 +25,7 @@ class Movie extends Component {
                 </CardBody>
                 <CardFooter>
                     <CardLink href="#" onClick={this.handleEditClick}>{strings.EDIT_BUTTON}</CardLink>
-                    <CardLink href="#" onClick={() => this.props.deleteMovie(id)}>{strings.DELETE_BUTTON}</CardLink>
+                    <CardLink href="#" onClick={() => this.props.toggleDeleteConfirm(id)}>{strings.DELETE_BUTTON}</CardLink>
                 </CardFooter>
             </Card>
         );

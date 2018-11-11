@@ -71,6 +71,9 @@ export const fetchMovies = () => async dispatch => {
     return dispatch(receiveMovies(movies));
 };
 
+
+// UI related
+
 /**
  * SHOW_FORM action creator.
  * @param {string} mode - The mode of the form (add/edit).
@@ -85,4 +88,9 @@ export const showForm = mode => ({
  */
 export const toggleForm = () => ({
     type: types.TOGGLE_FORM
+});
+
+export const toggleDeleteConfirm = id => ({
+    type: types.TOGGLE_DELETE_CONFIRM,
+    id
 });

@@ -15,6 +15,8 @@ export const ADD_BUTTON = 'Add Movie';
 export const SUBMIT_ADD_BUTTON = 'Submit';
 export const SUBMIT_UPDATE_BUTTON = 'Update';
 
+export const DELETE_CONFIRMATION_BODY = 'Are you sure you want to delete this movie?';
+
 export const FORM_LABEL_TITLE = 'Title';
 export const FORM_LABEL_YEAR = 'Year';
 export const FORM_LABEL_DIRECTOR = 'Director';

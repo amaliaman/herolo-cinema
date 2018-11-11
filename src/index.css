@@ -14,8 +14,13 @@
     margin: var(--default-margin);
 }
 
+.modal-body button,
 form button {
     margin-right: var(--default-margin);
+}
+
+.modal-body .form-row {
+    margin-top: var(--default-margin);
 }
 
 .validation-error {
