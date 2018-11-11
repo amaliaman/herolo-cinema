@@ -24,9 +24,12 @@ class Home extends Component {
                     <MovieFormContainer />
                 </Row>
                 <Row className='footer'>
-                    <small>
-                        Background image <a href='https://www.freepik.com/free-photo/creative-arrangement-of-popcorn-and-clapper_2303387.htm' target="_blank" rel="noopener noreferrer">Designed by Freepik</a>
-                    </small>
+                    <div className='text-center'>
+                        <p><a href='https://github.com/amaliaman/herolo-cinema' target="_blank" rel="noopener noreferrer">GitHub</a></p>
+                        <small className="text-muted">
+                            Background image <a href='https://www.freepik.com/free-photo/creative-arrangement-of-popcorn-and-clapper_2303387.htm' target="_blank" rel="noopener noreferrer">Designed by Freepik</a>
+                        </small>
+                    </div>
                 </Row>
             </Container>
         );

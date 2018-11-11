@@ -38,7 +38,9 @@ form button {
 }
 
 .footer {
-    color: var(--purple);
-    display: flex;
-    justify-content: center;
+    font-weight: bold;
+}
+
+.footer>div {
+    width: 100%;
 }
