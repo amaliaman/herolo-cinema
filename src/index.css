@@ -13,3 +13,7 @@
 .row {
     margin: var(--default-margin);
 }
+
+form button {
+    margin-right: var(--default-margin);
+}

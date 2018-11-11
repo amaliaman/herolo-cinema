@@ -65,7 +65,8 @@ class MovieForm extends Component {
                     <Label for="runtime">{strings.FORM_LABEL_RUNTIME}</Label>
                     <Input type="text" name="runtime" id="runtime" placeholder={strings.FORM_LABEL_RUNTIME} onChange={this.handleChange} value={this.state.runtime} />
                 </FormGroup>
-                <Button color="primary" type="submit">{this.props.buttonLabel}</Button>
+                <Button color={strings.COLORS.INFO} type="submit">{this.props.buttonLabel}</Button>
+                <Button outline color={strings.COLORS.SECONDARY} type="button" onClick={this.props.toggle}>{strings.CANCEL_BUTTON}</Button>
             </Form>
         );
     }
