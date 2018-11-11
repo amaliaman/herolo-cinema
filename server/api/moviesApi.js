@@ -7,7 +7,7 @@ const uuidv4 = require('uuid/v4');
 router.post('/',
     async (req, res) => {
         try {
-            const titles = (req.body.titles);
+            const { titles } = req.body;
             const url = `${process.env.MOVIES_BASE_URL}${process.env.MOVIES_API_KEY}`;
             const movies = await Promise.all(titles.map(t => axios.get(`${url}&t="${t}"`)));
             const parsedMovies = movies.map(m => {
@@ -28,9 +28,9 @@ router.post('/',
     });
 
 /**
- * Convert a sentence to title case
- * @param {string} sentence - The sentence to convert
- * @return The sentence in the desired case
+ * Convert a sentence to title case.
+ * @param {string} sentence - The sentence to convert.
+ * @return The sentence in the desired case.
  */
 const convertToTitleCase = sentence => {
     const casedTitle = sentence

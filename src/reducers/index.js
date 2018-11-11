@@ -16,21 +16,7 @@ const initialState = {
     }
 };
 
-//////////////
-const aa = {
-    director: "aaPhil Tippett",
-    genre: "aaAction, Adventure, Horror, Sci-Fi",
-    id: "aaa18da55f-efb5-4211-baae-f2b38e9e5def",
-    runtime: "aa88 min",
-    title: "aaStarship Troopers 2 Hero Of The Federation",
-    year: "aa2004"
-}
-/////////////////////////////////////
-const movies = (state = /* initialState.movies */{
-    isFetching: false,
-    items: [aa],
-    selectedId: ''
-}, action) => {
+const movies = (state = initialState.movies, action) => {
     switch (action.type) {
         case types.ADD_MOVIE:
             const newMovie = {
@@ -64,7 +50,18 @@ const movies = (state = /* initialState.movies */{
                     }
                     else return movie;
                 })
-            }
+            };
+        case types.REQUEST_MOVIES:
+            return {
+                ...state,
+                isFetching: true
+            };
+        case types.RECEIVE_MOVIES:
+            return {
+                ...state,
+                items: action.movies,
+                isFetching: false
+            };
         default:
             return state;
     }

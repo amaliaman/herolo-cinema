@@ -1,4 +1,6 @@
 import * as types from '../constants/ActionTypes';
+import titles from '../data/titles.json'
+import transportLayer from '../utils/TransportLayer';
 
 /**
  * ADD_MOVIE action creator.
@@ -42,8 +44,32 @@ export const selectForEdit = id => ({
     id
 });
 
+/**
+ * REQUEST_MOVIES action creator.
+ * Make ajax call to movies API to receive movie list.
+ */
+export const requestMovies = () => ({
+    type: types.REQUEST_MOVIES
+});
 
+/**
+ * RECEIVE_MOVIES action creator.
+ * Receive response from movies API and parse it.
+ * @param {Array} movies - The response from the API.
+ */
+export const receiveMovies = movies => ({
+    type: types.RECEIVE_MOVIES,
+    movies
+});
 
+/**
+ * Handle the actual API call and dispatch RECEIVE_MOVIES action.
+ */
+export const fetchMovies = () => async dispatch => {
+    dispatch(requestMovies());
+    const movies = await transportLayer.getMovies(titles);
+    return dispatch(receiveMovies(movies));
+};
 
 /**
  * SHOW_FORM action creator.

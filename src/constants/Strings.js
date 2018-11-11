@@ -20,3 +20,14 @@ export const FORM_LABEL_YEAR = 'Year';
 export const FORM_LABEL_DIRECTOR = 'Director';
 export const FORM_LABEL_GENRE = 'Genre';
 export const FORM_LABEL_RUNTIME = 'Runtime';
+
+export const ALERT_NO_MOVIES = `There are no movies here. Start by clicking the '${ADD_BUTTON}' button!`;
+
+export const COLORS = {
+    PRIMARY: 'primary',
+    SECONDARY: 'secondary',
+    SUCCESS: 'success',
+    INFO: 'info',
+    WARNING: 'warning',
+    DANGER: 'danger'
+};

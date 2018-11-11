@@ -1,0 +1,15 @@
+:root {
+    --default-margin: 10px;
+}
+
+.loader {
+    padding: 20px;
+}
+
+.container {
+    padding: var(--default-margin);
+}
+
+.row {
+    margin: var(--default-margin);
+}
