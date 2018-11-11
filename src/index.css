@@ -17,3 +17,8 @@
 form button {
     margin-right: var(--default-margin);
 }
+
+.validation-error {
+    color: var(--danger);
+    font-size: 0.8rem;
+}

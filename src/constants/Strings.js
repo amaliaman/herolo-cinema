@@ -31,3 +31,8 @@ export const COLORS = {
     WARNING: 'warning',
     DANGER: 'danger'
 };
+
+export const VALIDATION = {
+    REQUIRED: 'Required',
+    YEAR: 'Please enter a valid year'
+};
