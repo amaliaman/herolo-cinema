@@ -4,7 +4,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+
 import reducer from './reducers';
+import { fetchMovies } from './actions';
 import App from './containers/App'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,7 +22,7 @@ const store = createStore(
     applyMiddleware(...middleware)
 );
 
-// store.dispatch(getAllProducts())
+store.dispatch(fetchMovies());
 
 render(
     <Provider store={store}>

@@ -17,11 +17,11 @@ class Home extends Component {
                     <h1 className="display-4"><span role="img" aria-label="cinema">🎬</span> {strings.APP_TITLE}</h1>
                 </Row>
                 <Row>
-                    <MoviesContainer />
-                    <MovieFormContainer />
+                    <Button color={strings.COLORS.INFO} onClick={() => this.props.showForm(strings.FORM_MODES.ADD)}>{strings.ADD_BUTTON}</Button>
                 </Row>
                 <Row>
-                    <Button color="danger" onClick={() => this.props.showForm(strings.FORM_MODES.ADD)}>{strings.ADD_BUTTON}</Button>
+                    <MoviesContainer />
+                    <MovieFormContainer />
                 </Row>
             </Container>
         );
