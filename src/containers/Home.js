@@ -23,6 +23,11 @@ class Home extends Component {
                     <MoviesContainer />
                     <MovieFormContainer />
                 </Row>
+                <Row className='footer'>
+                    <small>
+                        Background image <a href="https://www.freepik.com/free-photo/crop-clapperboard-on-black-background_1444029.htm">Designed by Freepik</a>
+                    </small>
+                </Row>
             </Container>
         );
     }

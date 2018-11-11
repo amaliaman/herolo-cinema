@@ -61,7 +61,7 @@ const movies = (state = initialState.movies, action) => {
                     if (movie.id === action.id) {
                         return {
                             ...movie,
-                            ...action.data
+                            ...action.movie
                         }
                     }
                     else return movie;
