@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as strings from '../constants/Strings';
-import { toggleForm, addMovie, updateMovie } from '../actions';
+import { toggleForm, addMovieUnique, updateMovieUnique } from '../actions';
 
 import MovieFormWrapper from '../components/MovieFormWrapper';
 
@@ -17,14 +17,15 @@ class MovieFormContainer extends Component {
                 addMovie={this.props.addMovie}
                 movieToEdit={this.props.movieToEdit}
                 buttonLabel={this.props.buttonLabel}
+                errorMessage={this.props.errorMessage}
             />
         );
     }
 }
 
 const mapState = state => {
-    const { form, movies: { items, selectedId } } = state;
-    const propsObj = { isOpen: form.isOpen };
+    const { form, movies: { items, selectedId }, errorMessage } = state;
+    const propsObj = { isOpen: form.isOpen, errorMessage };
     if (form.mode === strings.FORM_MODES.EDIT) {
         propsObj.title = strings.EDIT_MOVIE_TITLE;
         propsObj.buttonLabel = strings.SUBMIT_UPDATE_BUTTON;
@@ -39,8 +40,8 @@ const mapState = state => {
 
 const mapActions = {
     toggleForm,
-    updateMovie,
-    addMovie
+    updateMovie: updateMovieUnique,
+    addMovie: addMovieUnique
 };
 
 export default connect(mapState, mapActions)(MovieFormContainer);

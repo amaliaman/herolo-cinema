@@ -17,7 +17,8 @@ const initialState = {
     },
     deleteConfirmation: {
         isOpen: false
-    }
+    },
+    errorMessage: ''
 };
 
 const movies = (state = initialState.movies, action) => {
@@ -112,10 +113,23 @@ const deleteConfirmation = (state = initialState.deleteConfirmation, action) => 
     }
 };
 
+const errorMessage = (state = initialState.errorMessage, action) => {
+    switch (action.type) {
+        case types.SHOW_ERROR:
+            return action.message;
+        case types.RESET_ERROR:
+            return initialState.errorMessage;
+        default:
+            return state;
+    }
+
+};
+
 const rootReducer = combineReducers({
     movies,
     form,
-    deleteConfirmation
+    deleteConfirmation,
+    errorMessage
 });
 
 export default rootReducer;

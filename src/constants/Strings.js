@@ -38,3 +38,5 @@ export const VALIDATION = {
     REQUIRED: 'Required',
     YEAR: 'Please enter a valid year'
 };
+
+export const UNIQUE_TITLE_ERROR = 'Title already exists';

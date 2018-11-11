@@ -1,12 +1,13 @@
 import React from 'react';
-import { Button, FormGroup, Label } from 'reactstrap';
+import { Button, FormGroup, Label, Row } from 'reactstrap';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 
 import * as strings from '../constants/Strings';
+import AlertMessage from './AlertMessage';
 
 const MovieSchema = yup.object().shape({
-    title: yup ////////////////////unique
+    title: yup
         .string()
         .required(strings.VALIDATION.REQUIRED),
     year: yup
@@ -26,7 +27,7 @@ const MovieSchema = yup.object().shape({
         .required(strings.VALIDATION.REQUIRED)
 });
 
-const MovieForm = ({ movieToEdit, updateMovie, addMovie, toggle, buttonLabel }) =>
+const MovieForm = ({ movieToEdit, updateMovie, addMovie, toggle, buttonLabel, errorMessage }) =>
     <Formik
         initialValues={{
             title: movieToEdit ? movieToEdit.title : '',
@@ -37,14 +38,12 @@ const MovieForm = ({ movieToEdit, updateMovie, addMovie, toggle, buttonLabel }) 
         }}
         validationSchema={MovieSchema}
         onSubmit={values => {
-            console.log(values);
             if (movieToEdit) {
                 updateMovie(values, movieToEdit.id);
             }
             else {
                 addMovie(values);
             }
-            toggle();
         }}
     >
         {({ errors, touched }) => (
@@ -77,6 +76,11 @@ const MovieForm = ({ movieToEdit, updateMovie, addMovie, toggle, buttonLabel }) 
 
                 <Button color={strings.COLORS.INFO} type="submit">{buttonLabel}</Button>
                 <Button outline color={strings.COLORS.SECONDARY} type="button" onClick={toggle}>{strings.CANCEL_BUTTON}</Button>
+
+                {errorMessage &&
+                    <Row form>
+                        <AlertMessage message={errorMessage} color={strings.COLORS.DANGER} />
+                    </Row>}
             </Form>
         )}
     </Formik>;

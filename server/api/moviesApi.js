@@ -38,7 +38,7 @@ const convertToTitleCase = sentence => {
         .split(' ')
         .map(word => word
             .replace(word[0], word[0].toUpperCase())
-            .replace(/[^0-9a-z]/gi, '')
+            .replace(/[^0-9a-z:-]/gi, '')
         )
         .join(' ');
     return casedTitle;

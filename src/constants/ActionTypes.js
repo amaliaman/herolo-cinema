@@ -10,3 +10,5 @@ export const RECEIVE_MOVIES = 'RECEIVE_MOVIES';
 export const SHOW_FORM = 'SHOW_FORM';
 export const TOGGLE_FORM = 'TOGGLE_FORM';
 export const TOGGLE_DELETE_CONFIRM = 'TOGGLE_DELETE_CONFIRM';
+export const SHOW_ERROR = 'SHOW_ERROR';
+export const RESET_ERROR = 'RESET_ERROR';
